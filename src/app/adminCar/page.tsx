@@ -51,14 +51,14 @@ function AdminCar() {
                     tag: "Sport Car",
                     date: "18 July",
                     price: "$96.00",
-                    img: "/car3.png",
+                    img: "/car3.svg",
                   },
                   {
                     name: "CR - V",
                     tag: "SUV",
                     date: "17 July",
                     price: "$80.00",
-                    img: "/car6.png",
+                    img: "/car04.png",
                   },
                 ].map((car, index) => (
                   <li key={index} className="flex items-center justify-between">
