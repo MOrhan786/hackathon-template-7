@@ -1,3 +1,4 @@
+"use client"
 import SideNavbar from "@/components/sideNavbar";
 import React from "react";
 import Image from "next/image";
@@ -5,10 +6,15 @@ import Link from "next/link";
 import Reviews from "@/components/reviews";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BsHeartFill } from "react-icons/bs";
+import { FuelIcon as GasPump, Car, Users2 } from 'lucide-react'
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { cars3, cars4 } from "@/constant/cars";
 
-function CarDetail() {
+import { Heart, Star } from "lucide-react";
+
+ function CarDetail() 
+ {
+
     return (
         <div className="w-full flex">
        {/* side bar div */}
@@ -21,40 +27,106 @@ function CarDetail() {
       <section className=" w-full flex flex-col md:flex-row gap-5  items-center justify-around">
           {/* four car img */}
           <div className="first flex flex-col gap-4 w-full  lg:max-w-[470px]  lg:max-h-[508px]">
-            <div>
-              <Image src={"/View.png"} alt="" width={492} height={360} />
-            </div>
-            <div className=" flex items-center justify-between gap-2 lg:gap-2">
-              <Image src={"/View 1.png"} alt="" width={148} height={124} />
+          
+          <div className="bg-[#3563E9] rounded-md p-6 shadow-lg max-w-[492px] w-full ">
+            <div  className="flex justify-start flex-col text-start items-start">
+              <h1 className= "font-[Plus Jakarta Sans] lg:text-[32px] sm:text-[24px]  font-semibold lg:leading-[48px] sm:leading-8 tracking-[0.03em] sm:tracking-normal text-left  text-white mb-4" >
+                Sports car with the best <br/> design and acceleration </h1>
+              <p className="text-start text-white mb-4">
+              Safety and comfort while driving a <br/>futuristic and elegant sports car 
+              </p>
+             <div className=" mt-[32px]">
+              <Image src={"/car-blue-1.svg"} alt="" width={492} height={360} />
+               </div>
+               </div>
+
+          </div>
+          
+            <div className=" flex items-center justify-between gap-2 lg:gap-2 sm:justify-center ">
+              
+            
+            
+            <Image src={"/car-blue-1.svg"} alt="" width={148} height={124} 
+               className="bg-[#3563E9] rounded-lg  lg:w-[164px] lg:h-[124px] md:w-[80px] md:h-[62px] sm:w-[80px] sm:h-[62px] object-contain " />
+             
+       
+              
               <Image src={"/View 2 .png"} alt="" width={148} height={124} />
               <Image src={"/View 3.png"} alt="" width={148} height={124} />
             </div>
           </div>
-          {/* second div  rent button */}
-          <div className="flex flex-col w-full  lg:max-w-[492px] h-auto lg:max-h-[508px] bg-white justify-between rounded-xl shadow-md">
-          <Image
-              src={"/Detail Car (1).png"}
-              alt="Detail Car"
-              width={492}
-              height={508}
-              className="w-full h-auto rounded-t-xl object-cover"
-            />
-
-            <div className="p-4 flex  items-center gap-4">
-              <div className="flex items-center justify-between w-full">
-                <h1 className="font-bold text-lg sm:text-xl lg:text-2xl">
-                  $80.00 /{" "}
-                  <span className="text-gray-500 text-sm lg:text-base">
-                    day $100.00
-                  </span>
-                </h1>
-              </div>
-              <Link href={"/rentCar"}>
-                <button className="bg-[#3563e9] hover:bg-[#264ac6] transition-all p-3 sm:p-4 px-6 sm:px-10 text-nowrap  text-white rounded-md w-full max-w-[180px] text-center">
-                  Rent Now
-                </button>
-              </Link>
+          
+          <div className="w-full max-w-[492px] bg-white rounded-[10px] p-6 shadow-sm">
+          
+          {/* Header with Title and Heart */}
+      <div className="flex justify-between items-start mb-8">
+        <div className="space-y-2">
+          <h2 className="text-[32px] font-bold text-[#1A202C] leading-[150%] tracking-[-0.03em]">
+            Nissan GT-R
+          </h2>
+          <div className="flex items-center gap-2">
+            <div className="flex gap-0.5">
+              {[...Array(4)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 fill-[#FBAD39] text-[#FBAD39]" />
+              ))}
+              <Star className="w-5 h-5 text-[#90A3BF]" />
             </div>
+            <span className="text-sm text-[#596780] tracking-[0.02em]">
+              440+ Reviewer
+            </span>
+          </div>
+        </div>
+        <button className="text-[#ED3F3F]">
+          <Heart className="w-6 h-6 fill-current" />
+        </button>
+      </div>
+
+      {/* Description */}
+      <p className="text-[#596780] text-xl leading-[200%] tracking-[-0.02em] mb-8">
+  NISMO has become the embodiment of Nissan&apos;s outstanding performance, inspired by the most
+  unforgiving proving ground, the &quot;race track&quot;.
+</p>
+
+      {/* Specifications Grid */}
+      <div className="grid grid-cols-2 gap-11 mb-8">
+        <div className="space-y-4">
+          <div className="flex justify-between">
+            <span className="text-[#90A3BF] text-xl">Type Car</span>
+            <span className="text-[#596780] text-xl font-semibold">Sport</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-[#90A3BF] text-xl">Steering</span>
+            <span className="text-[#596780] text-xl font-semibold">Manual</span>
+          </div>
+        </div>
+        <div className="space-y-4">
+          <div className="flex justify-between">
+            <span className="text-[#90A3BF] text-xl">Capacity</span>
+            <span className="text-[#596780] text-xl font-semibold">2 Person</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-[#90A3BF] text-xl">Gasoline</span>
+            <span className="text-[#596780] text-xl font-semibold">70L</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Price and Action */}
+      <div className="flex justify-between items-center">
+        <div>
+          <p className="text-[28px] font-bold text-[#1A202C]">
+            $80.00<span className="text-xl font-normal">/days</span>
+          </p>
+          <p className="text-base font-bold text-[#90A3BF] line-through">
+            $100.00
+          </p>
+        </div>
+        <Link href={"/rentCar"}>
+                <Button className="bg-[#3563e9] p-2 text-white rounded-md">
+                  Rent Now
+                </Button>
+                </Link>
+      </div>
             </div>
          
 
@@ -86,7 +158,7 @@ function CarDetail() {
               <CardTitle className="w-full flex items-center justify-between">
                {car.name}
                <button className="text-[#ED3F3F] ">
-                  <BsHeartFill className="w-6 h-6" />
+                  <BsHeart className="w-6 h-6" />
                 </button>
               </CardTitle>
               <CardDescription>{car.type}</CardDescription>
@@ -95,14 +167,43 @@ function CarDetail() {
               <Image src={car.image} alt={car.name} width={220} height={68}
                className=" bg-gradient-to-t from-white to-transparent " 
               />
-              <Image src={car.spec} alt="" width={256} height={24} />
+             
+                {/* start code */}
+                            <div className="flex flex-row items-start gap-4 sm:gap-[17px] p-6 w-full sm:w-[269px]">
+                     {/* Gasoline Specification */}
+                     <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[60px]">
+                       <GasPump className="w-6 h-6 text-[#90A3BF]" />
+                       <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+                        {car.fuel}
+                       </span>
+                     </div>
+               
+                     {/* Car Type Specification */}
+                     <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[84px]">
+                       <Car className="w-6 h-6 text-[#90A3BF]" />
+                       <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+                        {car.transmission}
+                       </span>
+                     </div>
+               
+                     {/* Capacity Specification */}
+                     <div className="flex flex-row items-center gap-2 sm:gap-[7px] w-auto sm:w-[91px]">
+                       <Users2 className="w-6 h-6 text-[#90A3BF]" />
+                       <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+                        {car.capacity}
+                       </span>
+                     </div>
+                   </div>
+                   {/* end code */} 
             </CardContent>
             <CardFooter className="w-full flex items-center justify-between">
               <p className="text-[20px] font-bold text-[#1A202C]  leading-none tracking-tight">
                {car.price}
                 <span className="text-sm font-medium text-gray-500">/day</span>
               </p>
-              <Link href={"/rentCar"}>
+              
+
+              <Link href={"/carDetail"}>
                 <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                   Rent Now
                 </Button>
@@ -142,14 +243,40 @@ function CarDetail() {
               <Image src={car.image} alt={car.name} width={220} height={68}
                className=" bg-gradient-to-t from-white to-transparent " 
               />
-              <Image src={car.spec} alt="" width={256} height={24} />
+                {/* start code */}
+                            <div className="flex flex-row items-start gap-4 sm:gap-[17px] p-6 w-full sm:w-[269px]">
+                     {/* Gasoline Specification */}
+                     <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[60px]">
+                       <GasPump className="w-6 h-6 text-[#90A3BF]" />
+                       <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+                        {car.fuel}
+                       </span>
+                     </div>
+               
+                     {/* Car Type Specification */}
+                     <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[84px]">
+                       <Car className="w-6 h-6 text-[#90A3BF]" />
+                       <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+                        {car.transmission}
+                       </span>
+                     </div>
+               
+                     {/* Capacity Specification */}
+                     <div className="flex flex-row items-center gap-2 sm:gap-[7px] w-auto sm:w-[91px]">
+                       <Users2 className="w-6 h-6 text-[#90A3BF]" />
+                       <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+                        {car.capacity}
+                       </span>
+                     </div>
+                   </div>
+                   {/* end code */}
             </CardContent>
             <CardFooter className="w-full flex items-center justify-between">
               <p className="text-[20px] font-bold text-[#1A202C]  leading-none tracking-tight">
                {car.price}
                 <span className="text-sm font-medium text-gray-500">/day</span>
               </p>
-              <Link href={"/rentCar"}>
+              <Link href={"/carDetail"}>
                 <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                   Rent Now
                 </Button>

@@ -1,16 +1,15 @@
 import React from "react";
 
 import { Button } from "@/components/ui/button"
-
-
-
-import { BsHeartFill } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { cars, cars1 } from "@/constant/cars";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { FuelIcon as GasPump, Car, Users2 } from 'lucide-react'
 import Image from "next/image";
+import Link from "next/link";
 
 
-function Cards() {
+function Cards() {   
   return (
 
     <>
@@ -35,8 +34,8 @@ function Cards() {
               <CardTitle className="w-full flex items-center justify-between">
                {car.name}
                <button className="text-[#ED3F3F] ">
-                  <BsHeartFill className="w-6 h-6" />
-                </button>
+                                 <BsHeart className="w-6 h-6" />
+                               </button>
               </CardTitle>
               <CardDescription>{car.type}</CardDescription>
             </CardHeader>
@@ -44,7 +43,35 @@ function Cards() {
               <Image src={car.image} alt={car.name} width={220} height={68}
                className=" bg-gradient-to-t from-white to-transparent " 
               />
-              <Image src={car.spec} alt="" width={256} height={24} />
+              {/* <Image src={car.spec} alt="" width={256} height={24} /> */}
+             {/* start code */}
+             <div className="flex flex-row items-start gap-4 sm:gap-[17px] p-6 w-full sm:w-[269px]">
+      {/* Gasoline Specification */}
+      <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[60px]">
+        <GasPump className="w-6 h-6 text-[#90A3BF]" />
+        <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+         {car.fuel}
+        </span>
+      </div>
+
+      {/* Car Type Specification */}
+      <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[84px]">
+        <Car className="w-6 h-6 text-[#90A3BF]" />
+        <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+         {car.transmission}
+        </span>
+      </div>
+
+      {/* Capacity Specification */}
+      <div className="flex flex-row items-center gap-2 sm:gap-[7px] w-auto sm:w-[91px]">
+        <Users2 className="w-6 h-6 text-[#90A3BF]" />
+        <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+         {car.capacity}
+        </span>
+      </div>
+    </div>
+    {/* end code */}
+
             </CardContent>
             <CardFooter className="w-full flex items-center justify-between">
               <p className="text-[20px] font-bold text-[#1A202C]  leading-none tracking-tight">
@@ -52,9 +79,11 @@ function Cards() {
                 <span className="text-sm font-medium text-gray-500">/day</span>
               </p>
             
+              <Link href={"/carDetail"}>
                 <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                   Rent Now
                 </Button>
+              </Link>
            
             </CardFooter>
           </Card>
@@ -79,8 +108,10 @@ function Cards() {
             <CardHeader>
               <CardTitle className="w-full flex items-center justify-between">
                {car.name}
-              
-                <Image src={"/heart.png"} alt="" width={24} height={24} />
+               <button className="text-[#ED3F3F] ">
+                                 <BsHeartFill className="w-6 h-6" />
+                               </button>
+                {/* <Image src={"/heart.png"} alt="" width={24} height={24} /> */}
                 
             
               </CardTitle>
@@ -89,17 +120,46 @@ function Cards() {
             <CardContent className="w-full flex flex-col items-center justify-center gap-4   ">
               <Image src={car.image} alt={car.name} width={220} height={68}
               />
-              <Image src={car.spec} alt="" width={256} height={24} />
+              {/* <Image src={car.spec} alt="" width={256} height={24} /> */}
+                {/* start code */}
+             <div className="flex flex-row items-start gap-4 sm:gap-[17px] p-6 w-full sm:w-[269px]">
+      {/* Gasoline Specification */}
+      <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[60px]">
+        <GasPump className="w-6 h-6 text-[#90A3BF]" />
+        <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+         {car.fuel}
+        </span>
+      </div>
+
+      {/* Car Type Specification */}
+      <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[84px]">
+        <Car className="w-6 h-6 text-[#90A3BF]" />
+        <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+         {car.transmission}
+        </span>
+      </div>
+
+      {/* Capacity Specification */}
+      <div className="flex flex-row items-center gap-2 sm:gap-[7px] w-auto sm:w-[91px]">
+        <Users2 className="w-6 h-6 text-[#90A3BF]" />
+        <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+         {car.capacity}
+        </span>
+      </div>
+    </div>
+    {/* end code */}
+            
             </CardContent>
             <CardFooter className="w-full flex items-center justify-between">
               <p className="text-[20px] font-bold text-[#1A202C] leading-none tracking-tight">
                {car.price}
                 <span className="text-sm font-medium text-gray-500">/day</span>
               </p>
-            
+              <Link href={"/carDetail"}>
                 <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                   Rent Now
                 </Button>
+              </Link>
              
             </CardFooter>
           </Card>

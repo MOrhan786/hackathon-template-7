@@ -5,10 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { FuelIcon as GasPump, Car, Users2,  } from 'lucide-react'
 import { BsHeartFill } from 'react-icons/bs';
 import { cars2 } from '@/constant/cars';
 
 function CategorySection() {
+  
   return (
     <div className="w-full flex">
           {/* sidebar  */}
@@ -33,6 +35,7 @@ function CategorySection() {
             <CardHeader>
               <CardTitle className="w-full flex items-center justify-between">
                {car.name}
+             
                <button className="text-[#ED3F3F] ">
                   <BsHeartFill className="w-6 h-6" />
                 </button>
@@ -43,18 +46,45 @@ function CategorySection() {
               <Image src={car.image} alt={car.name} width={220} height={68}
                className=" bg-gradient-to-t from-white to-transparent " 
               />
-              <Image src={"/spec1.png"} alt="" width={256} height={24} />
+              {/* <Image src={"/spec1.png"} alt="" width={256} height={24} /> */}
+               {/* start code */}
+             <div className="flex flex-row items-start gap-4 sm:gap-[17px] p-6 w-full sm:w-[269px]">
+      {/* Gasoline Specification */}
+      <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[60px]">
+        <GasPump className="w-6 h-6 text-[#90A3BF]" />
+        <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+         {car.fuel}
+        </span>
+      </div>
+
+      {/* Car Type Specification */}
+      <div className="flex flex-row items-center gap-2 sm:gap-[8px] w-auto sm:w-[84px]">
+        <Car className="w-6 h-6 text-[#90A3BF]" />
+        <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+         {car.transmission}
+        </span>
+      </div>
+
+      {/* Capacity Specification */}
+      <div className="flex flex-row items-center gap-2 sm:gap-[7px] w-auto sm:w-[91px]">
+        <Users2 className="w-6 h-6 text-[#90A3BF]" />
+        <span className="font-['Plus_Jakarta_Sans'] font-medium text-sm leading-[150%] tracking-[-0.02em] text-[#90A3BF] whitespace-nowrap">
+         {car.capacity}
+        </span>
+      </div>
+    </div>
+    {/* end code */}
             </CardContent>
             <CardFooter className="w-full flex items-center justify-between">
               <p className="text-[20px] font-bold text-[#1A202C]  leading-none tracking-tight">
                {car.price}
                 <span className="text-sm font-medium text-gray-500">/day</span>
               </p>
-              <Link href={"/detailPage"}>
+              <Link href={"/carDetail"}>
                 <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                   Rent Now
                 </Button>
-              </Link>
+                </Link>
             </CardFooter>
           </Card>
               
@@ -63,19 +93,19 @@ function CategorySection() {
           
                {/* button */}
        {/* <section id="block5" className="button w-full text-center  "> */}
-        <div className="w-[50px] mt-[30px ] flex  flex-col items-center justify-between gap-4">
+        <div className="w-[50px] mt-[30px ] flex  flex-col items-center justify-center gap-4">
            
               <Link
-                href={"/carDetail"}
+                href={"/"}
                 className="text-[16px] leading-6 hover:text-gray-600 flex items-center lg:justify-center md:justify-center sm:justify-center"
               >
-                <Button className="bg-[#3563E9] hover:bg-[#3563E9]/90 text-white px-5 py-3 rounded ml-40 ">
+                <Button className="bg-[#3563E9] hover:bg-[#3563E9]/90 text-white px-5 py-3 rounded lg:ml-[1200px] md:ml-[400px] sm:ml-[300px] ">
                   Show more car
                 </Button>
               </Link>
             </div>
              </section>
-            {/* </section> */}
+           
             
               </div>
     </div>
