@@ -1,3 +1,4 @@
+// src\components\sideNavbar.tsx
 "use client"
 
 import * as React from "react"

@@ -1,3 +1,4 @@
+// src\app\carDetail\page.tsx
 "use client"
 import SideNavbar from "@/components/sideNavbar";
 import React from "react";

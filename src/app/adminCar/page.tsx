@@ -1,4 +1,4 @@
-
+// src\app\adminCar\page.tsx
 import CarStats from '@/components/carStats';
 
 import { SideBar } from '@/components/sideBar';

@@ -1,3 +1,4 @@
+// src\components\reviews.tsx
 'use client'
 
 import { Star } from 'lucide-react'

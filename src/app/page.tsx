@@ -1,3 +1,4 @@
+// src\app\page.tsx
 "use client";
 import CardsCar from "@/components/cardsCar";
 import PickUp from "@/components/pickUp";
