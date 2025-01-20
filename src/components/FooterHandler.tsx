@@ -9,7 +9,7 @@ export default function FooterHandler() {
   const pathname = usePathname();
 
   // Paths where footer should not appear
-  const noFooterPaths = ["/adminCar"];
+  const noFooterPaths = ["/adminCar/adminId"];
 
   if (noFooterPaths.includes(pathname)) {
     return null; // Do not render Footer

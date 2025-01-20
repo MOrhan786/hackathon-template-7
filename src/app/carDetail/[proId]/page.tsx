@@ -1,5 +1,4 @@
-// src\app\carDetail\page.tsx
-"use client"
+
 import SideNavbar from "@/components/sideNavbar";
 import React from "react";
 import Image from "next/image";
@@ -9,12 +8,57 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { FuelIcon as GasPump, Car, Users2 } from 'lucide-react'
 import { BsHeart, BsHeartFill } from "react-icons/bs";
-import { cars3, cars4 } from "@/constant/cars";
+import {  cars3, cars4 } from "@/constant/cars";
 
 import { Heart, Star } from "lucide-react";
+// =======add to cart declare
+// declare global {
+//   interface Window {
+//     Snipcart: any;
+//   }}
 
- function CarDetail() 
- {
+
+
+  async function CarDetail(
+     {searchParams}:{searchParams: Promise<
+     {
+      id:number,
+      carImage:string,
+      carName:string,
+      carPrice:number,
+      carCapacity:number,
+      carTransmission:string,
+      carFuel:number, 
+     carType:string
+    }>}) 
+    {
+
+ const {carImage,carName,carPrice,carCapacity,carTransmission,carType,carFuel} = await searchParams
+ 
+
+
+// const searchParams = useSearchParams()
+// const heading= searchParams.get('heading')
+// //  const subheading= searchParams.get('subheading')
+// const price= searchParams.get('price')
+// const src= searchParams.get('src')
+
+
+
+
+  //  =====Add to cart fuction
+  // const handleAddToCart = () => {
+//     window.Snipcart.api.cart.items.add({
+//     id: heading,
+//     name: heading,
+//     price: price,
+//     url: `heading=${heading}&price=${price}&src=${src}`,
+//     image: src,
+//   });
+// };
+
+
+
 
     return (
         <div className="w-full flex">
@@ -36,27 +80,35 @@ import { Heart, Star } from "lucide-react";
               <p className="text-start text-white mb-4">
               Safety and comfort while driving a <br/>futuristic and elegant sports car 
               </p>
-             <div className=" mt-[32px]">
-              <Image src={"/car-blue-1.svg"} alt="" width={492} height={360} />
+             <div className=" mt-[32px] ">
+              
+              <Image src={carImage} alt="carImage" width={492} height={360} />
                </div>
                </div>
 
           </div>
           
+          
+          
+            {/* <div className="flex justify-center overflow-hidden">
+              <Image src={"/View.png"} alt="" width={492} height={360} />
+            </div> */}
             <div className=" flex items-center justify-between gap-2 lg:gap-2 sm:justify-center ">
               
             
             
-            <Image src={"/car-blue-1.svg"} alt="" width={148} height={124} 
+            <Image src={carImage} alt="car-blue-img" width={148} height={124} 
                className="bg-[#3563E9] rounded-lg  lg:w-[164px] lg:h-[124px] md:w-[80px] md:h-[62px] sm:w-[80px] sm:h-[62px] object-contain " />
              
        
               
-              <Image src={"/View 2 .png"} alt="" width={148} height={124} />
-              <Image src={"/View 3.png"} alt="" width={148} height={124} />
+              <Image src={"/View 2 .png"} alt="car-view-2img" width={148} height={124} />
+              <Image src={"/View 3.png"} alt="car-view-3img" width={148} height={124} />
             </div>
           </div>
-          
+          {/* second div  rent button */}
+          {/* <div className="flex flex-col w-full  lg:max-w-[492px] h-auto lg:max-h-[508px] bg-white justify-between rounded-xl shadow-md"> */}
+         {/* Nissan GT-R div */}
           <div className="w-full max-w-[492px] bg-white rounded-[10px] p-6 shadow-sm">
           
           {/* Header with Title and Heart */}
@@ -77,9 +129,11 @@ import { Heart, Star } from "lucide-react";
             </span>
           </div>
         </div>
-        <button className="text-[#ED3F3F]">
-          <Heart className="w-6 h-6 fill-current" />
+
+        <button className= "text-[#ED3F3F]" >
+          <Heart className= "w-6 h-6 fill-current" />
         </button>
+
       </div>
 
       {/* Description */}
@@ -88,26 +142,27 @@ import { Heart, Star } from "lucide-react";
   unforgiving proving ground, the &quot;race track&quot;.
 </p>
 
+
       {/* Specifications Grid */}
       <div className="grid grid-cols-2 gap-11 mb-8">
         <div className="space-y-4">
           <div className="flex justify-between">
             <span className="text-[#90A3BF] text-xl">Type Car</span>
-            <span className="text-[#596780] text-xl font-semibold">Sport</span>
+            <span className="text-[#596780] text-xl font-semibold">{carType}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-[#90A3BF] text-xl">Steering</span>
-            <span className="text-[#596780] text-xl font-semibold">Manual</span>
+            <span className="text-[#596780] text-xl font-semibold">{carTransmission}</span>
           </div>
         </div>
         <div className="space-y-4">
           <div className="flex justify-between">
             <span className="text-[#90A3BF] text-xl">Capacity</span>
-            <span className="text-[#596780] text-xl font-semibold">2 Person</span>
+            <span className="text-[#596780] text-xl font-semibold">{carCapacity}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-[#90A3BF] text-xl">Gasoline</span>
-            <span className="text-[#596780] text-xl font-semibold">70L</span>
+            <span className="text-[#596780] text-xl font-semibold">{carFuel}</span>
           </div>
         </div>
       </div>
@@ -116,13 +171,14 @@ import { Heart, Star } from "lucide-react";
       <div className="flex justify-between items-center">
         <div>
           <p className="text-[28px] font-bold text-[#1A202C]">
-            $80.00<span className="text-xl font-normal">/days</span>
+            {carPrice}<span className="text-xl font-normal">/days</span>
           </p>
           <p className="text-base font-bold text-[#90A3BF] line-through">
             $100.00
           </p>
         </div>
-        <Link href={"/rentCar"}>
+        <Link href={`/rentCar/rentId?carImage=${carImage}&carName=${carName}&carPrice=${carPrice}
+                     &carCapacity=${carCapacity}`}>
                 <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                   Rent Now
                 </Button>
@@ -168,7 +224,7 @@ import { Heart, Star } from "lucide-react";
               <Image src={car.image} alt={car.name} width={220} height={68}
                className=" bg-gradient-to-t from-white to-transparent " 
               />
-             
+              {/* <Image src={car.spec} alt="" width={256} height={24} /> */}
                 {/* start code */}
                             <div className="flex flex-row items-start gap-4 sm:gap-[17px] p-6 w-full sm:w-[269px]">
                      {/* Gasoline Specification */}
@@ -202,9 +258,14 @@ import { Heart, Star } from "lucide-react";
                {car.price}
                 <span className="text-sm font-medium text-gray-500">/day</span>
               </p>
-              
+              {/* add to cart button */}
 
-              <Link href={"/carDetail"}>
+              {/* <Button className="bg-[#3563e9] p-2 text-white rounded-md" >
+                  Rent Now
+                </Button> */}
+
+              <Link href={`/rentCar/rentId?carImage=${car.image}&carPrice=${car.price}&carName=${car.name}
+                     &carTransmission=${car.transmission}&carType=${car.type}`}>
                 <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                   Rent Now
                 </Button>
@@ -244,6 +305,7 @@ import { Heart, Star } from "lucide-react";
               <Image src={car.image} alt={car.name} width={220} height={68}
                className=" bg-gradient-to-t from-white to-transparent " 
               />
+              {/* <Image src={car.spec} alt="" width={256} height={24} /> */}
                 {/* start code */}
                             <div className="flex flex-row items-start gap-4 sm:gap-[17px] p-6 w-full sm:w-[269px]">
                      {/* Gasoline Specification */}
@@ -277,7 +339,8 @@ import { Heart, Star } from "lucide-react";
                {car.price}
                 <span className="text-sm font-medium text-gray-500">/day</span>
               </p>
-              <Link href={"/carDetail"}>
+              <Link href={`/rentCar/rentId?carImage=${car.image}&carPrice=${car.price}&carName=${car.name}
+                     &carTransmission=${car.transmission}&carType=${car.type}`}>
                 <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                   Rent Now
                 </Button>

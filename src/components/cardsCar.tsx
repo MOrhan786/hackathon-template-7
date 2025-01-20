@@ -1,4 +1,3 @@
-// src\components\cardsCar.tsx
 import React from "react";
 
 import { Button } from "@/components/ui/button"
@@ -79,12 +78,20 @@ function Cards() {
                {car.price}
                 <span className="text-sm font-medium text-gray-500">/day</span>
               </p>
+              <Link     
+                    href={`/carDetail/proId?carId=${car.id}&carImage=${car.image}&carPrice=${car.price}&carName=${car.name}
+                     &carTransmission=${car.transmission}&carType=${car.type}&carFuel=${car.fuel}&carCapacity=${car.capacity}`}
+                  >
+                    <Button className="bg-[#3563e9] p-2 text-white rounded-md">
+                      Rent Now
+                    </Button>
+                  </Link>
             
-              <Link href={"/carDetail"}>
+              {/* <Link href={"/carDetail"}>
                 <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                   Rent Now
                 </Button>
-              </Link>
+              </Link> */}
            
             </CardFooter>
           </Card>
@@ -156,11 +163,15 @@ function Cards() {
                {car.price}
                 <span className="text-sm font-medium text-gray-500">/day</span>
               </p>
-              <Link href={"/carDetail"}>
-                <Button className="bg-[#3563e9] p-2 text-white rounded-md">
-                  Rent Now
-                </Button>
-              </Link>
+              <Link     
+                    href={`/carDetail/proId?carId=${car.id}&carImage=${car.image}&carPrice=${car.price}&carName=${car.name}
+                     &carTransmission=${car.transmission}&carType=${car.type}&carFuel=${car.fuel}&carCapacity=${car.capacity}`}
+                  >
+                    <Button className="bg-[#3563e9] p-2 text-white rounded-md">
+                      Rent Now
+                    </Button>
+                  </Link>
+             
              
             </CardFooter>
           </Card>

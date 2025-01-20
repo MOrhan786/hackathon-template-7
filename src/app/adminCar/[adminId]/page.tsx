@@ -1,6 +1,5 @@
-// src\app\adminCar\page.tsx
 import CarStats from '@/components/carStats';
-
+// import MapCar from '@/components/mapCar';
 import { SideBar } from '@/components/sideBar';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,7 +7,22 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import React from 'react'
 import Image from 'next/image';
 
-function AdminCar() {
+async function AdminCar(
+  {searchParams}:{searchParams:
+    Promise<{
+      id:number,
+      carImage:string,
+      carName:string,
+      carPrice:number,
+      carCapacity:number,
+      carTransmission:string,
+      carFuel:number, 
+      carType:string
+    }>})
+     {
+  
+    const {carImage,carName,carPrice,carType} = await searchParams
+    
   return (
     <div className="flex flex-col lg:flex-row bg-gray-100 min-h-screen">
       {/* Sidebar */}
@@ -34,7 +48,7 @@ function AdminCar() {
                 <div className="flex items-start gap-4">
                   <div className="w-[132px] h-[72px] bg-[#3563E9] rounded-lg relative overflow-hidden">
                     <Image 
-                      src="/Car2.png"
+                      src={carImage}
                       alt="Car thumbnail"
                       width={132}
                       height={108}
@@ -42,8 +56,9 @@ function AdminCar() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-[#1A202C]">Nissan GT - R</h3>
-                    <p className="text-sm text-[#3D5278]">Sport Car</p>
+                    <h3 className="text-2xl font-bold text-[#1A202C]">{carName}</h3>
+
+                    <p className="text-sm text-[#3D5278]">{carType}</p>
                    <div className='flex gap-2 items-center w-[34px] ml-[200px] mt-[-45px]  '>
                     <span className="font-['Plus_Jakarta_Sans'] text-[14px] font-medium leading-[21px] tracking-[-0.02em] text-[#3D5278]  ">#9761</span>
                     </div>
@@ -153,7 +168,7 @@ function AdminCar() {
                       <h4 className="text-xl font-bold text-[#1A202C]">Total Rental Price</h4>
                       <p className="text-sm text-[#90A3BF]">Overall price and includes rental discount</p>
                     </div>
-                    <span className="text-3xl font-bold text-[#1A202C]">$80.00</span>
+                    <span className="text-3xl font-bold text-[#1A202C]">{carPrice}</span>
                   </div>
                 </div>
               </CardContent>
@@ -229,7 +244,7 @@ function AdminCar() {
                     </div>
                   </li>
                 ))}
-              </ul>
+              </ul> 
             </div>
            </div>
    

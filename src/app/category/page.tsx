@@ -1,4 +1,3 @@
-// src\app\category\page.tsx
 "use client"
 import React, { useState } from "react";
 import PickUp from "@/components/pickUp";
@@ -19,13 +18,14 @@ import { BsHeartFill } from "react-icons/bs";
 import { cars2 } from "@/constant/cars";
 
 function CategorySection() {
+
   const initialVisibleCars = 9; // Number of cars initially visible
   const [visibleCars, setVisibleCars] = useState(initialVisibleCars); // State to track visible cars
   const [showLessEnabled, setShowLessEnabled] = useState(false); // State to track whether "Show Less" button is displayed
 
   // Function to show more cars
   const showMoreCars = () => {
-    setVisibleCars((prev) => prev + 9); // Show 6 more cars
+    setVisibleCars((prev) => prev + 3); // Show 6 more cars
     setShowLessEnabled(true); // Enable "Show Less" button
   };
 
@@ -107,20 +107,21 @@ function CategorySection() {
                       /day
                     </span>
                   </p>
-                  {/* <Link
-                    href={`/carDetail//productdetails?carId=${car.id}&carImage=${car.image}&carPrice=${car.price}&carName=${car.name}`}
-                  >
-                    <Button className="bg-[#3563e9] p-2 text-white rounded-md">
-                      Rent Now
-                    </Button>
-                  </Link> */}
-                  <Link
-                    href={"carDetail"}
+                  <Link     
+                    href={`/carDetail/proId?carId=${car.id}&carImage=${car.image}&carPrice=${car.price}&carName=${car.name}
+                     &carTransmission=${car.transmission}&carType=${car.type}&carFuel=${car.fuel}&carCapacity=${car.capacity}`}
                   >
                     <Button className="bg-[#3563e9] p-2 text-white rounded-md">
                       Rent Now
                     </Button>
                   </Link>
+                  {/* <Link
+                    href={"carDetail"}
+                  >
+                    <Button className="bg-[#3563e9] p-2 text-white rounded-md">
+                      Rent Now
+                    </Button>
+                  </Link> */}
                 </CardFooter>
               </Card>
             ))}
@@ -142,7 +143,7 @@ function CategorySection() {
             {showLessEnabled && (
               <Button
                 onClick={showLessCars}
-                className="bg-red-500 hover:bg-red-500/90 text-white px-5 py-3 rounded"
+                className="bg-blue-500 hover:bg-red-500/90 text-white px-5 py-3 rounded"
               >
                 Show Less Cars
               </Button>

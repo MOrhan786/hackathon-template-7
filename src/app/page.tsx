@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import ProductCards from "./products/page";
 
 
 export default function Home() {
@@ -104,7 +105,13 @@ export default function Home() {
           </div>
         </section>
       
-      {/* Section 4 - Ads with buttons */}
+      {/* api data fetch her cards */}
+        {/* Section 4 - Ads with buttons */}
+        <section id="block3" className="popular w-full flex flex-col gap-4">
+        <ProductCards/>
+      
+      </section>
+     
   </div>
  </>
   );
