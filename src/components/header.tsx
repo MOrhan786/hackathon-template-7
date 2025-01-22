@@ -18,7 +18,7 @@ export default function Header() {
       </div>
 
       {/* Search */}
-      <div className="flex items-center gap-2 w-full max-w-[492px] h-[44px] border rounded-full px-3 mt-4 ml-1 md:mt-0 md:flex-1 md:mr-8">
+      <div className="flex items-center gap-2 w-full max-w-[492px] h-[44px] border bg-slate-100 rounded-full px-3 mt-4 ml-1 md:mt-0 md:flex-1 md:mr-8">
         <Image
           src="/search-normal.png"
           alt="Search"

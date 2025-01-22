@@ -34,7 +34,7 @@ async function uploadImageToSanity(imageUrl) {
   }
 }
 
-export async function importData() {
+ async function importData() {
   try {
     console.log('Fetching car data from API...');
 

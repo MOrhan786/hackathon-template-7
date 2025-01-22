@@ -3,7 +3,7 @@ import SideNavbar from "@/components/sideNavbar";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Reviews from "@/components/reviews";
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FuelIcon as GasPump, Car, Users2 } from 'lucide-react'
@@ -11,11 +11,8 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 import {  cars3, cars4 } from "@/constant/cars";
 
 import { Heart, Star } from "lucide-react";
-// =======add to cart declare
-// declare global {
-//   interface Window {
-//     Snipcart: any;
-//   }}
+import PostCreator from "@/components/comments";
+
 
 
 
@@ -35,31 +32,6 @@ import { Heart, Star } from "lucide-react";
 
  const {carImage,carName,carPrice,carCapacity,carTransmission,carType,carFuel} = await searchParams
  
-
-
-// const searchParams = useSearchParams()
-// const heading= searchParams.get('heading')
-// //  const subheading= searchParams.get('subheading')
-// const price= searchParams.get('price')
-// const src= searchParams.get('src')
-
-
-
-
-  //  =====Add to cart fuction
-  // const handleAddToCart = () => {
-//     window.Snipcart.api.cart.items.add({
-//     id: heading,
-//     name: heading,
-//     price: price,
-//     url: `heading=${heading}&price=${price}&src=${src}`,
-//     image: src,
-//   });
-// };
-
-
-
-
     return (
         <div className="w-full flex">
        {/* side bar div */}
@@ -115,7 +87,7 @@ import { Heart, Star } from "lucide-react";
       <div className="flex justify-between items-start mb-8">
         <div className="space-y-2">
           <h2 className="text-[32px] font-bold text-[#1A202C] leading-[150%] tracking-[-0.03em]">
-            Nissan GT-R
+           {carName}
           </h2>
           <div className="flex items-center gap-2">
             <div className="flex gap-0.5">
@@ -190,7 +162,10 @@ import { Heart, Star } from "lucide-react";
           </section>
              {/* review sec */}
              <section className=" w-full flex items-center justify-">
-             <Reviews />
+              <div className="w-full max-w-5xl p-6 bg-white mt-[-20px] rounded-[10px]">
+             <PostCreator blog_id={0}/>
+             {/* <Reviews /> */}
+             </div>
                 </section>
 
                 {/* car sec */}
