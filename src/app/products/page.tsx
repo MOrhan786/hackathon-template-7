@@ -80,7 +80,7 @@ const ProductCards: React.FC = () => {
           key={cars._id}
           className="w-full max-w-[304px] mx-auto h-[388px] flex flex-col justify-between shadow-md transition-transform duration-300 hover:scale-105"
         >
-          <CardHeader>mn
+          <CardHeader>
             <CardTitle className="w-full flex items-center justify-between">
               {cars.name}
               <button className="text-[#ED3F3F]">
