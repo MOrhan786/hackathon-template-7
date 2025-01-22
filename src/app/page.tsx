@@ -84,7 +84,17 @@ export default function Home() {
       <section id="block3" className="popular w-full flex flex-col gap-4">
       <CardsCar/>
       </section>
+      
+          {/* api data fetch her cards */}
+        {/* Section 4 - Ads with buttons */}
+        <section id="block3" className="popular w-full flex flex-col gap-4">
+        <ProductCards/>
+      
+      </section>
+     
 
+
+          
        {/* button */}
        <section
           id="block5"
@@ -104,14 +114,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-      
-      {/* api data fetch her cards */}
-        {/* Section 4 - Ads with buttons */}
-        <section id="block3" className="popular w-full flex flex-col gap-4">
-        <ProductCards/>
-      
-      </section>
-     
   </div>
  </>
   );
