@@ -26,11 +26,12 @@ import PostCreator from "@/components/comments";
       carCapacity:number,
       carTransmission:string,
       carFuel:number, 
-     carType:string
+     carType:string,
+     imageUrl:string
     }>}) 
     {
 
- const {carImage,carName,carPrice,carCapacity,carTransmission,carType,carFuel} = await searchParams
+ const {carImage,carName,carPrice,carCapacity,carTransmission,carType,carFuel , imageUrl} = await searchParams
  
     return (
         <div className="w-full flex">

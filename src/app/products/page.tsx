@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { BsHeartFill } from "react-icons/bs";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 // import { SanityClient } from "sanity";
 
 const sanity = sanityClient ({
@@ -29,12 +30,14 @@ interface Cars {
   fuelCapacity: string;
   imageUrl: string;
   seatingCapacity: number;
+  originalPrice: number;
   pricePerDay: number; 
   productImage: {
     asset: {
       _ref: string;
     };
   };
+  tags: string[];
 }
 
 const ProductCards: React.FC = () => {
@@ -50,10 +53,12 @@ const ProductCards: React.FC = () => {
         fuelCapacity,
          transmission,
         seatingCapacity,
+        originalPrice,
          pricePerDay,
            type,
            tags,
-           "imageUrl": image.asset->url
+           "imageUrl": image.asset->url,
+           
            }
           `;
       const data = await sanity.fetch(query);
@@ -78,7 +83,7 @@ const ProductCards: React.FC = () => {
       {products.map((cars) => (
         <Card
           key={cars._id}
-          className="w-full max-w-[304px] mx-auto h-[388px] flex flex-col justify-between shadow-md transition-transform duration-300 hover:scale-105"
+          className="w-full max-w-[304px] mx-auto h-[488px] flex flex-col justify-between shadow-md transition-transform duration-300 hover:scale-105"
         >
           <CardHeader>
             <CardTitle className="w-full flex items-center justify-between">
@@ -107,7 +112,7 @@ const ProductCards: React.FC = () => {
                   {cars.transmission}
                 </span>
               </div>
-
+             
               {/* Capacity Specification */}
               <div className="flex flex-row items-center gap-2 sm:gap-[7px] w-auto sm:w-[91px]">
                 <Users2 className="w-6 h-6 text-[#90A3BF]" />
@@ -115,14 +120,34 @@ const ProductCards: React.FC = () => {
                   {cars.seatingCapacity}
                 </span>
               </div>
+              </div>
+              {/*  */}
+              <div className=" w-full flex items-center justify-between  ">
+                
+             
+              <p className="text-[15px] font-bold text-[#1A202C] leading-none tracking-tight line-through">
+             {cars.originalPrice ?  `${cars.originalPrice}` : "N/A"}
+              </p>
+            
+            <p className="text-[20px] font-bold text-[#1A202C] leading-none tracking-tight">
+              {cars.pricePerDay}
+              
+            </p>
             </div>
           </CardContent>
           <CardFooter className="w-full flex items-center justify-between">
-            <p className="text-[20px] font-bold text-[#1A202C] leading-none tracking-tight">
-              {cars.pricePerDay}
-              <span className="text-sm font-medium text-gray-500">/day</span>
+          <p className="text-[20px] font-bold text-[#1A202C] leading-none tracking-tight">
+              {cars.tags}
+              
             </p>
-            <Button className="bg-[#3563e9] p-2 text-white rounded-md">Rent Now</Button>
+            <Link     
+                    href={`/carDetail/proId?carsId=${cars._id}&carsImageUrl=${cars.imageUrl}&carspricePerDay=${cars.pricePerDay}&carsName=${cars.name}
+                     &carsTransmission=${cars.transmission}&carType=${cars.type}&carsfuelCapacity${cars.fuelCapacity}&carsseatingCapacity=${cars.seatingCapacity}`}
+                  >
+                    <Button className="bg-[#3563e9] p-2 text-white rounded-md">
+                      Rent Now
+                    </Button>
+                  </Link>
           </CardFooter>
         </Card>
       ))}
